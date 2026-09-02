@@ -24,9 +24,9 @@
 Для мобов учитывается их тип поведения:
 
 ```prolog
-passive(Mob)
-aggressive(Mob)
-neutral(Mob)
+passive(Mob),
+aggressive(Mob),
+neutral(Mob).
 ```
 
 ### Item
@@ -34,15 +34,15 @@ neutral(Mob)
 Для предметов учитываются способ получения, тип предмета и размер стака:
 
 ```prolog
-crafted(Item)
-dropped(Item)
+crafted(Item),
+dropped(Item),
 
-is_block(Item)
-is_weapon(Item)
-is_armor(Item)
-is_material(Item)
+is_block(Item),
+is_weapon(Item),
+is_armor(Item),
+is_material(Item),
 
-stack_size(Item, Count)
+stack_size(Item, Count).
 ```
 
 ## Отношения между сущностями
@@ -50,19 +50,19 @@ stack_size(Item, Count)
 ### Мобы
 
 ```prolog
-drops(Mob, Item)
+drops(Mob, Item).
 ```
 
 Моб может оставить предмет после убийства.
 
 ```prolog
-spawns(Mob, Biome)
+spawns(Mob, Biome).
 ```
 
 Моб может появляться в определённом биоме.
 
 ```prolog
-uses(Mob, Item)
+uses(Mob, Item).
 ```
 
 Моб может использовать определённый предмет.
@@ -70,19 +70,19 @@ uses(Mob, Item)
 ### Биомы и измерения
 
 ```prolog
-locates(Biome, Dimension)
+locates(Biome, Dimension).
 ```
 
 Биом располагается в определённом измерении.
 
 ```prolog
-biome_major_block(Biome, Block)
+biome_major_block(Biome, Block).
 ```
 
 Определённый блок является преобладающим или характерным для биома.
 
 ```prolog
-biome_unique_mob(Biome, Mob)
+biome_unique_mob(Biome, Mob).
 ```
 
 Моб является уникальным для определённого биома.
@@ -90,19 +90,19 @@ biome_unique_mob(Biome, Mob)
 ### Структуры
 
 ```prolog
-generates(Structure, Biome)
+generates(Structure, Biome).
 ```
 
 Структура генерируется в определённом биоме.
 
 ```prolog
-contains(Structure, Item)
+contains(Structure, Item).
 ```
 
 Структура может содержать определённые предметы.
 
 ```prolog
-is_built(Structure, Block)
+is_built(Structure, Block).
 ```
 
 Структура строится из определённых блоков.
@@ -110,7 +110,7 @@ is_built(Structure, Block)
 ### Блоки
 
 ```prolog
-is_mined(Block, Biome)
+is_mined(Block, Biome).
 ```
 
 Блок может быть добыт в определённом биоме.
@@ -118,7 +118,7 @@ is_mined(Block, Biome)
 ### Предметы и блоки
 
 ```prolog
-uses_as(Item, Block)
+uses_as(Item, Block).
 ```
 
 Предмет может использоваться в игровом мире как блок.
@@ -126,25 +126,25 @@ uses_as(Item, Block)
 ### Измерения
 
 ```prolog
-dimension_major_block(Dimension, Block)
+dimension_major_block(Dimension, Block).
 ```
 
 Блок является преобладающим для определённого измерения.
 
 ```prolog
-dimension_unique_item(Dimension, Item)
+dimension_unique_item(Dimension, Item).
 ```
 
 Предмет является уникальным для определённого измерения.
 
 ```prolog
-dimension_unique_structure(Dimension, Structure)
+dimension_unique_structure(Dimension, Structure).
 ```
 
 Структура является уникальной для определённого измерения.
 
 ```prolog
-accessed_by(Dimension, Method)
+accessed_by(Dimension, Method).
 ```
 
 Определяет способ попадания в измерение.
@@ -161,7 +161,7 @@ accessed_by(Dimension, Method)
 4. Определение измерения, в котором можно получить предмет с определённого моба.
 5. Определение измерения, в котором можно найти предмет из структуры или получить с моба.
 6. Определение потенциально враждебных мобов.
-7. Определение невраждебных пассивных мобов.
+7. Определение не враждебных пассивных мобов.
 
 Правила используют композицию, конъюнкцию, дизъюнкцию и отрицание.
 
