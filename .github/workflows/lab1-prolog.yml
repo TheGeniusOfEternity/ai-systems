@@ -1,4 +1,4 @@
-name: Lab 1 Prolog
+name: Lab 1 Validation
 
 on:
   push:
@@ -20,7 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Install SWI-Prolog
-        run: sudo apt-get update && sudo apt-get install --yes swi-prolog-nox
+      - name: Install validation tools
+        run: sudo apt-get update && sudo apt-get install --yes swi-prolog-nox libxml2-utils ripgrep
       - name: Run Lab 1 tests
-        run: swipl -q -s lab1/prolog/test/run_tests.pl
+        run: |
+          swipl -q -s lab1/prolog/test/run_tests.pl
+          bash lab1/ontology/test/validate_ontology.sh
