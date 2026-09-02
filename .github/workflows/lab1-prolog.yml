@@ -25,4 +25,5 @@ jobs:
       - name: Run Lab 1 tests
         run: |
           swipl -q -s lab1/prolog/test/run_tests.pl
+          swipl -q -s lab1/defense/run_prolog_examples.pl
           bash lab1/ontology/test/validate_ontology.sh
