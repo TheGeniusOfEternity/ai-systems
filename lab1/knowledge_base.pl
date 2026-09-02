@@ -61,3 +61,48 @@ locates(end_highlands, end).
 generates(village, plains).
 generates(mansion, dark_forest).
 generates(end_city, end_highlands).
+
+% Structure contains item
+contains(village, carrot).
+contains(mansion, golden_helmet).
+contains(end_city, shulker_shell).
+
+
+% =========================
+% Inference rules
+% =========================
+
+% A mob can be encountered in the dimension containing its spawn biome.
+mob_dimension(Mob, Dimension) :-
+    spawns(Mob, Biome),
+    locates(Biome, Dimension).
+
+% A structure can be encountered in the dimension containing its generation biome.
+structure_dimension(Structure, Dimension) :-
+    generates(Structure, Biome),
+    locates(Biome, Dimension).
+
+% An item can be found in the dimension of a structure that contains it.
+item_dimension_from_structure(Item, Dimension) :-
+    contains(Structure, Item),
+    structure_dimension(Structure, Dimension).
+
+% An item can be obtained in the dimension where its source mob spawns.
+item_dimension_from_mob(Item, Dimension) :-
+    drops(Mob, Item),
+    mob_dimension(Mob, Dimension).
+
+% An item is available in a dimension either from a mob or from a structure.
+available_item_in_dimension(Item, Dimension) :-
+    item_dimension_from_mob(Item, Dimension);
+    item_dimension_from_structure(Item, Dimension).
+
+% Aggressive and neutral mobs are potentially hostile.
+hostile_mob(Mob) :-
+    aggressive(Mob);
+    neutral(Mob).
+
+% A passive mob that is not hostile is non-hostile.
+non_hostile_mob(Mob) :-
+    passive(Mob),
+    \+ hostile_mob(Mob).
