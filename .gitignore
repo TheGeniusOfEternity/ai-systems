@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# IDEs
+.idea/
+*.iml
+
+# SWI-Prolog compiled and temporary files
+*.qlf
+*.tmp
