@@ -1,0 +1,24 @@
+name: Lab 1 Prolog
+
+on:
+  push:
+    paths:
+      - 'lab1/**'
+      - '.github/workflows/lab1-prolog.yml'
+  pull_request:
+    paths:
+      - 'lab1/**'
+      - '.github/workflows/lab1-prolog.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install SWI-Prolog
+        run: sudo apt-get update && sudo apt-get install --yes swi-prolog-nox
+      - name: Run Lab 1 tests
+        run: swipl -q -s lab1/prolog/test/run_tests.pl
