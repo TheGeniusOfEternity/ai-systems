@@ -12,6 +12,10 @@ for expected in \
   'owl:ObjectProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#drops"' \
   'owl:DatatypeProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#stackSize"' \
   'owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#sheep"' \
+  'owl:NamedIndividual rdf:about="#rawPorkchop"' \
+  'owl:NamedIndividual rdf:about="#goldenHelmet"><rdf:type rdf:resource="#CraftedItem"/><rdf:type rdf:resource="#DroppedItem"/>' \
+  'rdf:Description rdf:about="#PassiveMob"' \
+  'owl:onProperty rdf:resource="#locatedIn"' \
   'owl:AllDisjointClasses' \
   'owl:qualifiedCardinality'; do
   rg --fixed-strings --quiet "$expected" "$ontology_file"

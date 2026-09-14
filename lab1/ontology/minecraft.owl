@@ -37,7 +37,16 @@
     </rdfs:subClassOf>
   </owl:Class>
 
-  <owl:Class rdf:about="#Biome"><rdfs:subClassOf rdf:resource="#GameEntity"/></owl:Class>
+  <owl:Class rdf:about="#Biome">
+    <rdfs:subClassOf rdf:resource="#GameEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#locatedIn"/>
+        <owl:onClass rdf:resource="#Dimension"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
   <owl:Class rdf:about="#Dimension"><rdfs:subClassOf rdf:resource="#GameEntity"/></owl:Class>
   <owl:Class rdf:about="#Block"><rdfs:subClassOf rdf:resource="#GameEntity"/></owl:Class>
   <owl:Class rdf:about="#AccessMethod"><rdfs:subClassOf rdf:resource="#GameEntity"/></owl:Class>
@@ -60,6 +69,13 @@
       <rdf:Description rdf:about="#Dimension"/>
       <rdf:Description rdf:about="#Block"/>
       <rdf:Description rdf:about="#Structure"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <rdf:Description rdf:about="#PassiveMob"/>
+      <rdf:Description rdf:about="#NeutralMob"/>
+      <rdf:Description rdf:about="#AggressiveMob"/>
     </owl:members>
   </owl:AllDisjointClasses>
 
@@ -99,11 +115,12 @@
   <owl:NamedIndividual rdf:about="#zombiePiglin"><rdf:type rdf:resource="#NeutralMob"/></owl:NamedIndividual>
 
   <owl:NamedIndividual rdf:about="#ironSword"><rdf:type rdf:resource="#CraftedItem"/><rdf:type rdf:resource="#Weapon"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</stackSize></owl:NamedIndividual>
-  <owl:NamedIndividual rdf:about="#goldenHelmet"><rdf:type rdf:resource="#CraftedItem"/><rdf:type rdf:resource="#Armor"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</stackSize></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#goldenHelmet"><rdf:type rdf:resource="#CraftedItem"/><rdf:type rdf:resource="#DroppedItem"/><rdf:type rdf:resource="#Armor"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</stackSize></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#stick"><rdf:type rdf:resource="#CraftedItem"/><rdf:type rdf:resource="#Material"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#carrot"><rdf:type rdf:resource="#DroppedItem"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#rawMutton"><rdf:type rdf:resource="#DroppedItem"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#rawChicken"><rdf:type rdf:resource="#DroppedItem"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#rawPorkchop"><rdf:type rdf:resource="#DroppedItem"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#rottenFlesh"><rdf:type rdf:resource="#DroppedItem"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#whiteWool"><rdf:type rdf:resource="#DroppedItem"/><rdf:type rdf:resource="#BlockItem"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize><usesAs rdf:resource="#whiteWoolBlock"/></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#shulkerShell"><rdf:type rdf:resource="#Item"/></owl:NamedIndividual>
