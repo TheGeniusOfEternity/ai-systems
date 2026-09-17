@@ -26,16 +26,6 @@
   <owl:Class rdf:about="#Armor"><rdfs:subClassOf rdf:resource="#Item"/></owl:Class>
   <owl:Class rdf:about="#Material"><rdfs:subClassOf rdf:resource="#Item"/></owl:Class>
   <owl:Class rdf:about="#BlockItem"><rdfs:subClassOf rdf:resource="#Item"/></owl:Class>
-  <owl:Class rdf:about="#StackableItem">
-    <rdfs:subClassOf rdf:resource="#Item"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#stackSize"/>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
 
   <owl:Class rdf:about="#Biome">
     <rdfs:subClassOf rdf:resource="#GameEntity"/>
