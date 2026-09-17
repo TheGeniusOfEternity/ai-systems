@@ -34,6 +34,11 @@ is_weapon(iron_sword).
 is_armor(golden_helmet).
 is_material(stick).
 
+% Item stack size
+stack_size(iron_sword, 1).
+stack_size(carrot, 64).
+stack_size(white_wool, 64).
+
 
 % =========================
 % Relations
@@ -43,7 +48,6 @@ is_material(stick).
 drops(sheep, raw_mutton).
 drops(sheep, white_wool).
 drops(chicken, raw_chicken).
-drops(zombie, rotten_flesh).
 
 % Mob spawns in biome
 spawns(sheep, plains).

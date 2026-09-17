@@ -14,8 +14,8 @@ for example `PassiveMob` is a subclass of `Mob` and `Armor` is a subclass of
 The ontology declares the main domain/range pairs from the Prolog knowledge
 base. It also declares these restrictions:
 
-* `Structure` has at least one `generatesIn` value of type `Biome`.
-* `StackableItem` has exactly one non-negative integer `stackSize` value.
+* `Biome` has exactly one `locatedIn` value of type `Dimension`.
+* `Structure` has exactly one `generatesIn` value of type `Biome`.
 * The main domain classes are pairwise disjoint.
 
 ## Prolog To OWL Mapping

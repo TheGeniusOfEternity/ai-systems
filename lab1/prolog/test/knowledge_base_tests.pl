@@ -23,4 +23,8 @@ test(hostile_mob_from_disjunction) :-
 test(non_hostile_mob_from_negation) :-
     non_hostile_mob(sheep).
 
+test(stack_size_for_items) :-
+    findall(Item-Count, stack_size(Item, Count), StackSizes),
+    assertion(StackSizes == [iron_sword-1, carrot-64, white_wool-64]).
+
 :- end_tests(knowledge_base).

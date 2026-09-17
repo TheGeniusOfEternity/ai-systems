@@ -6,6 +6,10 @@ ontology_file="$(dirname "$0")/../minecraft.owl"
 
 test -f "$ontology_file"
 xmllint --noout "$ontology_file"
+! rg --fixed-strings --quiet 'owl:minQualifiedCardinality' "$ontology_file"
+! rg --fixed-strings --quiet 'AccessMethod' "$ontology_file"
+! rg --fixed-strings --quiet 'accessedBy' "$ontology_file"
+rg --pcre2 --multiline --quiet '<owl:onProperty rdf:resource="#generatesIn"/>\s*<owl:onClass rdf:resource="#Biome"/>\s*<owl:qualifiedCardinality[^>]*>1</owl:qualifiedCardinality>' "$ontology_file"
 
 for expected in \
   'owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Mob"' \
