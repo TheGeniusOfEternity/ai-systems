@@ -77,13 +77,6 @@
   <owl:ObjectProperty rdf:about="#locatedIn"><rdfs:domain rdf:resource="#Biome"/><rdfs:range rdf:resource="#Dimension"/></owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#generatesIn"><rdfs:domain rdf:resource="#Structure"/><rdfs:range rdf:resource="#Biome"/></owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#contains"><rdfs:domain rdf:resource="#Structure"/><rdfs:range rdf:resource="#Item"/></owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#usesItem"><rdfs:domain rdf:resource="#Mob"/><rdfs:range rdf:resource="#Item"/></owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#builtFrom"><rdfs:domain rdf:resource="#Structure"/><rdfs:range rdf:resource="#Block"/></owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#minedIn"><rdfs:domain rdf:resource="#Block"/><rdfs:range rdf:resource="#Biome"/></owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#usesAs"><rdfs:domain rdf:resource="#Item"/><rdfs:range rdf:resource="#Block"/></owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#majorBlock"><rdfs:domain rdf:resource="#Dimension"/><rdfs:range rdf:resource="#Block"/></owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#uniqueItem"><rdfs:domain rdf:resource="#Dimension"/><rdfs:range rdf:resource="#Item"/></owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#uniqueStructure"><rdfs:domain rdf:resource="#Dimension"/><rdfs:range rdf:resource="#Structure"/></owl:ObjectProperty>
 
   <!-- Datatype properties -->
   <owl:DatatypeProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#stackSize">
@@ -111,9 +104,8 @@
   <owl:NamedIndividual rdf:about="#rawChicken"><rdf:type rdf:resource="#DroppedItem"/></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#rawPorkchop"><rdf:type rdf:resource="#DroppedItem"/></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#rottenFlesh"><rdf:type rdf:resource="#DroppedItem"/></owl:NamedIndividual>
-  <owl:NamedIndividual rdf:about="#whiteWool"><rdf:type rdf:resource="#DroppedItem"/><rdf:type rdf:resource="#BlockItem"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize><usesAs rdf:resource="#whiteWoolBlock"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#whiteWool"><rdf:type rdf:resource="#DroppedItem"/><rdf:type rdf:resource="#BlockItem"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#shulkerShell"><rdf:type rdf:resource="#Item"/></owl:NamedIndividual>
-  <owl:NamedIndividual rdf:about="#whiteWoolBlock"><rdf:type rdf:resource="#Block"/></owl:NamedIndividual>
 
   <owl:NamedIndividual rdf:about="#plains"><rdf:type rdf:resource="#Biome"/><locatedIn rdf:resource="#overworld"/></owl:NamedIndividual>
   <owl:NamedIndividual rdf:about="#darkForest"><rdf:type rdf:resource="#Biome"/><locatedIn rdf:resource="#overworld"/></owl:NamedIndividual>
