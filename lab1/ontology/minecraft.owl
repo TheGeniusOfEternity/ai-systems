@@ -1,534 +1,122 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#"
      xml:base="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft">
-        <rdfs:label>Minecraft knowledge base ontology</rdfs:label>
-    </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#contains -->
-
-    <owl:ObjectProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#contains">
-        <rdfs:domain rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Structure"/>
-        <rdfs:range rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#drops -->
-
-    <owl:ObjectProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#drops">
-        <rdfs:domain rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Mob"/>
-        <rdfs:range rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#generatesIn -->
-
-    <owl:ObjectProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#generatesIn">
-        <rdfs:domain rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Structure"/>
-        <rdfs:range rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#locatedIn -->
-
-    <owl:ObjectProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#locatedIn">
-        <rdfs:domain rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome"/>
-        <rdfs:range rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Dimension"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#spawnsIn -->
-
-    <owl:ObjectProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#spawnsIn">
-        <rdfs:domain rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Mob"/>
-        <rdfs:range rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#stackSize -->
-
-    <owl:DatatypeProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#stackSize">
-        <rdfs:domain rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#AggressiveMob -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#AggressiveMob">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Mob"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Armor -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Armor">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#GameEntity"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#locatedIn"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Dimension"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Block -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Block">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#GameEntity"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#BlockItem -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#BlockItem">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#CraftedItem -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#CraftedItem">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Dimension -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Dimension">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#GameEntity"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#DroppedItem -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#DroppedItem">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#GameEntity -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#GameEntity"/>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#GameEntity"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Material -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Material">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Mob -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Mob">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#GameEntity"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#NeutralMob -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#NeutralMob">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Mob"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#PassiveMob -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#PassiveMob">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Mob"/>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Structure -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Structure">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#GameEntity"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#generatesIn"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Weapon -->
-
-    <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Weapon">
-        <rdfs:subClassOf rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item"/>
-    </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#basaltDeltas -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#basaltDeltas">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome"/>
-        <locatedIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#nether"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#carrot -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#carrot">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#DroppedItem"/>
-        <stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#chicken -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#chicken">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#PassiveMob"/>
-        <drops rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#rawChicken"/>
-        <spawnsIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#plains"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#darkForest -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#darkForest">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome"/>
-        <locatedIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#overworld"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#end -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#end">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Dimension"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#endCity -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#endCity">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Structure"/>
-        <contains rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#shulkerShell"/>
-        <generatesIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#endHighlands"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#endHighlands -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#endHighlands">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome"/>
-        <locatedIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#end"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#goldenHelmet -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#goldenHelmet">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Armor"/>
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#CraftedItem"/>
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#DroppedItem"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#ironSword -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#ironSword">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#CraftedItem"/>
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Weapon"/>
-        <stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</stackSize>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#mansion -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#mansion">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Structure"/>
-        <contains rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#goldenHelmet"/>
-        <generatesIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#darkForest"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#nether -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#nether">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Dimension"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#overworld -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#overworld">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Dimension"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#pig -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#pig">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#PassiveMob"/>
-        <spawnsIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#plains"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#plains -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#plains">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome"/>
-        <locatedIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#overworld"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#rawChicken -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#rawChicken">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#DroppedItem"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#rawMutton -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#rawMutton">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#DroppedItem"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#rawPorkchop -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#rawPorkchop">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#DroppedItem"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#rottenFlesh -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#rottenFlesh">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#DroppedItem"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#sheep -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#sheep">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#PassiveMob"/>
-        <drops rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#rawMutton"/>
-        <drops rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#whiteWool"/>
-        <spawnsIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#plains"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#shulkerShell -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#shulkerShell">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#DroppedItem"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#skeleton -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#skeleton">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#AggressiveMob"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#soulSandValley -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#soulSandValley">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome"/>
-        <locatedIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#nether"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#stick -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#stick">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#CraftedItem"/>
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Material"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#village -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#village">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Structure"/>
-        <contains rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#carrot"/>
-        <generatesIn rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#plains"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#villager -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#villager">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#PassiveMob"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#whiteWool -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#whiteWool">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#BlockItem"/>
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#DroppedItem"/>
-        <stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#zombie -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#zombie">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#AggressiveMob"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#zombiePiglin -->
-
-    <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#zombiePiglin">
-        <rdf:type rdf:resource="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#NeutralMob"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // General axioms
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#AggressiveMob"/>
-            <rdf:Description rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#NeutralMob"/>
-            <rdf:Description rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#PassiveMob"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Biome"/>
-            <rdf:Description rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Block"/>
-            <rdf:Description rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Dimension"/>
-            <rdf:Description rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Item"/>
-            <rdf:Description rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Mob"/>
-            <rdf:Description rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Structure"/>
-        </owl:members>
-    </rdf:Description>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft">
+    <rdfs:label>Minecraft knowledge base ontology</rdfs:label>
+  </owl:Ontology>
+
+  <!-- Classes and hierarchy -->
+  <owl:Class rdf:about="#GameEntity"/>
+  <owl:Class rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#Mob">
+    <rdfs:subClassOf rdf:resource="#GameEntity"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PassiveMob"><rdfs:subClassOf rdf:resource="#Mob"/></owl:Class>
+  <owl:Class rdf:about="#NeutralMob"><rdfs:subClassOf rdf:resource="#Mob"/></owl:Class>
+  <owl:Class rdf:about="#AggressiveMob"><rdfs:subClassOf rdf:resource="#Mob"/></owl:Class>
+
+  <owl:Class rdf:about="#Item"><rdfs:subClassOf rdf:resource="#GameEntity"/></owl:Class>
+  <owl:Class rdf:about="#CraftedItem"><rdfs:subClassOf rdf:resource="#Item"/></owl:Class>
+  <owl:Class rdf:about="#DroppedItem"><rdfs:subClassOf rdf:resource="#Item"/></owl:Class>
+  <owl:Class rdf:about="#Weapon"><rdfs:subClassOf rdf:resource="#Item"/></owl:Class>
+  <owl:Class rdf:about="#Armor"><rdfs:subClassOf rdf:resource="#Item"/></owl:Class>
+  <owl:Class rdf:about="#Material"><rdfs:subClassOf rdf:resource="#Item"/></owl:Class>
+  <owl:Class rdf:about="#BlockItem"><rdfs:subClassOf rdf:resource="#Item"/></owl:Class>
+
+  <owl:Class rdf:about="#Biome">
+    <rdfs:subClassOf rdf:resource="#GameEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#locatedIn"/>
+        <owl:onClass rdf:resource="#Dimension"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Dimension"><rdfs:subClassOf rdf:resource="#GameEntity"/></owl:Class>
+  <owl:Class rdf:about="#Block"><rdfs:subClassOf rdf:resource="#GameEntity"/></owl:Class>
+
+  <owl:Class rdf:about="#Structure">
+    <rdfs:subClassOf rdf:resource="#GameEntity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#generatesIn"/>
+        <owl:onClass rdf:resource="#Biome"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <rdf:Description rdf:about="#Mob"/>
+      <rdf:Description rdf:about="#Item"/>
+      <rdf:Description rdf:about="#Biome"/>
+      <rdf:Description rdf:about="#Dimension"/>
+      <rdf:Description rdf:about="#Block"/>
+      <rdf:Description rdf:about="#Structure"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <rdf:Description rdf:about="#PassiveMob"/>
+      <rdf:Description rdf:about="#NeutralMob"/>
+      <rdf:Description rdf:about="#AggressiveMob"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+
+  <!-- Object properties -->
+  <owl:ObjectProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#drops">
+    <rdfs:domain rdf:resource="#Mob"/><rdfs:range rdf:resource="#Item"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#spawnsIn"><rdfs:domain rdf:resource="#Mob"/><rdfs:range rdf:resource="#Biome"/></owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#locatedIn"><rdfs:domain rdf:resource="#Biome"/><rdfs:range rdf:resource="#Dimension"/></owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#generatesIn"><rdfs:domain rdf:resource="#Structure"/><rdfs:range rdf:resource="#Biome"/></owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#contains"><rdfs:domain rdf:resource="#Structure"/><rdfs:range rdf:resource="#Item"/></owl:ObjectProperty>
+
+  <!-- Datatype properties -->
+  <owl:DatatypeProperty rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#stackSize">
+    <rdfs:domain rdf:resource="#Item"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+  </owl:DatatypeProperty>
+
+  <!-- Individuals translated from the Prolog facts -->
+  <owl:NamedIndividual rdf:about="https://github.com/TheGeniusOfEternity/ai-systems/lab1/ontology/minecraft#sheep">
+    <rdf:type rdf:resource="#PassiveMob"/><spawnsIn rdf:resource="#plains"/>
+    <drops rdf:resource="#rawMutton"/><drops rdf:resource="#whiteWool"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#pig"><rdf:type rdf:resource="#PassiveMob"/><spawnsIn rdf:resource="#plains"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#chicken"><rdf:type rdf:resource="#PassiveMob"/><spawnsIn rdf:resource="#plains"/><drops rdf:resource="#rawChicken"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#villager"><rdf:type rdf:resource="#PassiveMob"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#zombie"><rdf:type rdf:resource="#AggressiveMob"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#skeleton"><rdf:type rdf:resource="#AggressiveMob"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#zombiePiglin"><rdf:type rdf:resource="#NeutralMob"/></owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="#ironSword"><rdf:type rdf:resource="#CraftedItem"/><rdf:type rdf:resource="#Weapon"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</stackSize></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#goldenHelmet"><rdf:type rdf:resource="#CraftedItem"/><rdf:type rdf:resource="#DroppedItem"/><rdf:type rdf:resource="#Armor"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#stick"><rdf:type rdf:resource="#CraftedItem"/><rdf:type rdf:resource="#Material"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#carrot"><rdf:type rdf:resource="#DroppedItem"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#rawMutton"><rdf:type rdf:resource="#DroppedItem"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#rawChicken"><rdf:type rdf:resource="#DroppedItem"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#rawPorkchop"><rdf:type rdf:resource="#DroppedItem"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#rottenFlesh"><rdf:type rdf:resource="#DroppedItem"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#whiteWool"><rdf:type rdf:resource="#DroppedItem"/><rdf:type rdf:resource="#BlockItem"/><stackSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">64</stackSize></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#shulkerShell"><rdf:type rdf:resource="#Item"/></owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="#plains"><rdf:type rdf:resource="#Biome"/><locatedIn rdf:resource="#overworld"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#darkForest"><rdf:type rdf:resource="#Biome"/><locatedIn rdf:resource="#overworld"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#basaltDeltas"><rdf:type rdf:resource="#Biome"/><locatedIn rdf:resource="#nether"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#soulSandValley"><rdf:type rdf:resource="#Biome"/><locatedIn rdf:resource="#nether"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#endHighlands"><rdf:type rdf:resource="#Biome"/><locatedIn rdf:resource="#end"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#overworld"><rdf:type rdf:resource="#Dimension"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#nether"><rdf:type rdf:resource="#Dimension"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#end"><rdf:type rdf:resource="#Dimension"/></owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="#village"><rdf:type rdf:resource="#Structure"/><generatesIn rdf:resource="#plains"/><contains rdf:resource="#carrot"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#mansion"><rdf:type rdf:resource="#Structure"/><generatesIn rdf:resource="#darkForest"/><contains rdf:resource="#goldenHelmet"/></owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="#endCity"><rdf:type rdf:resource="#Structure"/><generatesIn rdf:resource="#endHighlands"/><contains rdf:resource="#shulkerShell"/></owl:NamedIndividual>
 </rdf:RDF>
-
-
-
-<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
-
