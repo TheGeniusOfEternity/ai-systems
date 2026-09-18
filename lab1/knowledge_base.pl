@@ -27,6 +27,7 @@ dropped(golden_helmet).
 dropped(raw_chicken).
 dropped(raw_porkchop).
 dropped(raw_mutton).
+dropped(shulker_shell).
 dropped(white_wool).
 
 is_block(white_wool).
