@@ -1,0 +1,16 @@
+name: Lab 2 DSS
+on:
+  push:
+    paths: ['lab1/knowledge_base.pl', 'lab2/**', '.github/workflows/lab2.yml']
+  pull_request:
+    paths: ['lab1/knowledge_base.pl', 'lab2/**', '.github/workflows/lab2.yml']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: sudo apt-get update && sudo apt-get install -y swi-prolog-nox
+      - run: swipl -q -s lab2/tests/dss_tests.pl
+      - run: python3 lab2/tests/test_cli.py
