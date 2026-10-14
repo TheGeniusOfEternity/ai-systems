@@ -3,76 +3,214 @@ item=шерсть
 overworld
 mob
 OUTPUT:
-Minecraft DSS. Введите item=<предмет>;dimension=<измерение>;method=<способ>.
-Можно указать только item: система задаст два вопроса. Для выхода: exit.
+
+Minecraft DSS — поиск источников ресурсов
+
+Формат: item=<предмет>;dimension=<измерение>;method=<способ>
+Можно указать только item: система задаст два вопроса.
+Пример: item=шерсть
+Для выхода: exit
+
+Введите запрос > 
 Какое измерение? overworld / nether / end / any
+> 
 Какой способ? mob / structure / any
+> 
 Запрос: recommend(white_wool, overworld, mob, Results).
-white_wool: mob sheep; биом plains; измерение overworld.
-Обоснование: drops(sheep, white_wool), spawns(sheep, plains), locates(plains, overworld).
+
+Рекомендации — найдено источников: 1
+
+  Предмет:   white_wool
+  Источник:  mob sheep
+  Биом:      plains
+  Измерение: overworld
+  Обоснование:
+    drops(sheep, white_wool)
+    spawns(sheep, plains)
+    locates(plains, overworld)
+
+
+Введите запрос > Работа завершена.
 
 INPUT:
 item=carrot;dimension=overworld;method=structure
 OUTPUT:
-Minecraft DSS. Введите item=<предмет>;dimension=<измерение>;method=<способ>.
-Можно указать только item: система задаст два вопроса. Для выхода: exit.
+
+Minecraft DSS — поиск источников ресурсов
+
+Формат: item=<предмет>;dimension=<измерение>;method=<способ>
+Можно указать только item: система задаст два вопроса.
+Пример: item=шерсть
+Для выхода: exit
+
+Введите запрос > 
 Запрос: recommend(carrot, overworld, structure, Results).
-carrot: structure village; биом plains; измерение overworld.
-Обоснование: contains(village, carrot), generates(village, plains), locates(plains, overworld).
+
+Рекомендации — найдено источников: 1
+
+  Предмет:   carrot
+  Источник:  structure village
+  Биом:      plains
+  Измерение: overworld
+  Обоснование:
+    contains(village, carrot)
+    generates(village, plains)
+    locates(plains, overworld)
+
+
+Введите запрос > Работа завершена.
 
 INPUT:
 item=shulker_shell;dimension=end;method=any
 OUTPUT:
-Minecraft DSS. Введите item=<предмет>;dimension=<измерение>;method=<способ>.
-Можно указать только item: система задаст два вопроса. Для выхода: exit.
+
+Minecraft DSS — поиск источников ресурсов
+
+Формат: item=<предмет>;dimension=<измерение>;method=<способ>
+Можно указать только item: система задаст два вопроса.
+Пример: item=шерсть
+Для выхода: exit
+
+Введите запрос > 
 Запрос: recommend(shulker_shell, end, any, Results).
-shulker_shell: structure end_city; биом end_highlands; измерение end.
-Обоснование: contains(end_city, shulker_shell), generates(end_city, end_highlands), locates(end_highlands, end).
+
+Рекомендации — найдено источников: 1
+
+  Предмет:   shulker_shell
+  Источник:  structure end_city
+  Биом:      end_highlands
+  Измерение: end
+  Обоснование:
+    contains(end_city, shulker_shell)
+    generates(end_city, end_highlands)
+    locates(end_highlands, end)
+
+
+Введите запрос > Работа завершена.
 
 INPUT:
 item=golden_helmet;dimension=any;method=structure
 OUTPUT:
-Minecraft DSS. Введите item=<предмет>;dimension=<измерение>;method=<способ>.
-Можно указать только item: система задаст два вопроса. Для выхода: exit.
+
+Minecraft DSS — поиск источников ресурсов
+
+Формат: item=<предмет>;dimension=<измерение>;method=<способ>
+Можно указать только item: система задаст два вопроса.
+Пример: item=шерсть
+Для выхода: exit
+
+Введите запрос > 
 Запрос: recommend(golden_helmet, any, structure, Results).
-golden_helmet: structure mansion; биом dark_forest; измерение overworld.
-Обоснование: contains(mansion, golden_helmet), generates(mansion, dark_forest), locates(dark_forest, overworld).
+
+Рекомендации — найдено источников: 1
+
+  Предмет:   golden_helmet
+  Источник:  structure mansion
+  Биом:      dark_forest
+  Измерение: overworld
+  Обоснование:
+    contains(mansion, golden_helmet)
+    generates(mansion, dark_forest)
+    locates(dark_forest, overworld)
+
+
+Введите запрос > Работа завершена.
 
 INPUT:
 item=raw_chicken;dimension=overworld;method=mob
 OUTPUT:
-Minecraft DSS. Введите item=<предмет>;dimension=<измерение>;method=<способ>.
-Можно указать только item: система задаст два вопроса. Для выхода: exit.
+
+Minecraft DSS — поиск источников ресурсов
+
+Формат: item=<предмет>;dimension=<измерение>;method=<способ>
+Можно указать только item: система задаст два вопроса.
+Пример: item=шерсть
+Для выхода: exit
+
+Введите запрос > 
 Запрос: recommend(raw_chicken, overworld, mob, Results).
-raw_chicken: mob chicken; биом plains; измерение overworld.
-Обоснование: drops(chicken, raw_chicken), spawns(chicken, plains), locates(plains, overworld).
+
+Рекомендации — найдено источников: 1
+
+  Предмет:   raw_chicken
+  Источник:  mob chicken
+  Биом:      plains
+  Измерение: overworld
+  Обоснование:
+    drops(chicken, raw_chicken)
+    spawns(chicken, plains)
+    locates(plains, overworld)
+
+
+Введите запрос > Работа завершена.
 
 INPUT:
 item=carrot;dimension=end;method=mob
 OUTPUT:
-Minecraft DSS. Введите item=<предмет>;dimension=<измерение>;method=<способ>.
-Можно указать только item: система задаст два вопроса. Для выхода: exit.
+
+Minecraft DSS — поиск источников ресурсов
+
+Формат: item=<предмет>;dimension=<измерение>;method=<способ>
+Можно указать только item: система задаст два вопроса.
+Пример: item=шерсть
+Для выхода: exit
+
+Введите запрос > 
 Запрос: recommend(carrot, end, mob, Results).
+
+Результат: совпадений нет
 В базе знаний нет источников с выбранными условиями.
-Можно изменить ограничения (end, mob). Альтернативы из БЗ:
-carrot: structure village; биом plains; измерение overworld.
-Обоснование: contains(village, carrot), generates(village, plains), locates(plains, overworld).
+Можно изменить ограничения (end, mob).
+Альтернативы из БЗ (не соответствуют исходным условиям):
+
+  Предмет:   carrot
+  Источник:  structure village
+  Биом:      plains
+  Измерение: overworld
+  Обоснование:
+    contains(village, carrot)
+    generates(village, plains)
+    locates(plains, overworld)
+
 Отсутствие факта не означает невозможность получения предмета в игре.
+
+Введите запрос > Работа завершена.
 
 INPUT:
 item=iron_sword;dimension=any;method=any
 OUTPUT:
-Minecraft DSS. Введите item=<предмет>;dimension=<измерение>;method=<способ>.
-Можно указать только item: система задаст два вопроса. Для выхода: exit.
+
+Minecraft DSS — поиск источников ресурсов
+
+Формат: item=<предмет>;dimension=<измерение>;method=<способ>
+Можно указать только item: система задаст два вопроса.
+Пример: item=шерсть
+Для выхода: exit
+
+Введите запрос > 
 Запрос: recommend(iron_sword, any, any, Results).
+
+Результат: совпадений нет
 В базе знаний нет источников с выбранными условиями.
 Предмет известен, но БЗ не описывает место его получения или рецепт крафта.
 Отсутствие факта не означает невозможность получения предмета в игре.
 
+Введите запрос > Работа завершена.
+
 INPUT:
 item=diamond
 OUTPUT:
-Minecraft DSS. Введите item=<предмет>;dimension=<измерение>;method=<способ>.
-Можно указать только item: система задаст два вопроса. Для выхода: exit.
-Ошибка: проверьте формат, ключи и значения. Пример: item=шерсть;dimension=overworld;method=any
+
+Minecraft DSS — поиск источников ресурсов
+
+Формат: item=<предмет>;dimension=<измерение>;method=<способ>
+Можно указать только item: система задаст два вопроса.
+Пример: item=шерсть
+Для выхода: exit
+
+Введите запрос > 
+Ошибка: проверьте формат, ключи и значения.
+Пример: item=шерсть;dimension=overworld;method=any
+
+Введите запрос > Работа завершена.
 

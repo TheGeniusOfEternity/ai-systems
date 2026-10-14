@@ -39,6 +39,11 @@ class DialogueTests(unittest.TestCase):
         self.assertIn('Ошибка:', text)
         self.assertIn('structure village', text)
 
+    def test_exit_with_spaces(self):
+        text = run("  exit  \n")
+        self.assertIn("Работа завершена.", text)
+        self.assertNotIn("Ошибка:", text)
+
     def test_eof(self):
         self.assertNotIn('Запрос:', run('item=carrot\n'))
 

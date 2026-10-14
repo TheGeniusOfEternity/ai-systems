@@ -65,44 +65,95 @@ method_alias("структуры", structure).
 method_alias("any", any).
 method_alias("любой", any).
 
-% Retry invalid values; EOF terminates cleanly instead of looping forever.
+% Диалог: каждый ответ проверяется, ошибочный ввод можно повторить.
 ask(Key, Prompt, Value) :-
-    writeln(Prompt), read_line_to_string(user_input, Line),
+    nl,
+    writeln(Prompt),
+    write('> '),
+    flush_output,
+    read_line_to_string(user_input, Line),
     Line \= end_of_file,
-    (normalize(Key, Line, Value) -> true ; writeln('Неизвестное значение. Повторите ввод.'), ask(Key, Prompt, Value)).
+    (   normalize(Key, Line, Value)
+    ->  true
+    ;   writeln('Неизвестное значение. Повторите ввод.'),
+        ask(Key, Prompt, Value)
+    ).
+
 complete(dimension, missing, Value) :- !,
     ask(dimension, 'Какое измерение? overworld / nether / end / any', Value).
 complete(method, missing, Value) :- !,
     ask(method, 'Какой способ? mob / structure / any', Value).
 complete(_, Value, Value).
 
+% Одна рекомендация: источник, место и отдельный блок доказательств.
 show_result(Item, result(Kind, Source, Biome, Dimension)) :-
-    format('~w: ~w ~w; биом ~w; измерение ~w.~n', [Item, Kind, Source, Biome, Dimension]),
-    (Kind == mob ->
-        format('Обоснование: drops(~w, ~w), spawns(~w, ~w), locates(~w, ~w).~n',
-            [Source, Item, Source, Biome, Biome, Dimension]) ;
-        format('Обоснование: contains(~w, ~w), generates(~w, ~w), locates(~w, ~w).~n',
-            [Source, Item, Source, Biome, Biome, Dimension])).
+    format('  Предмет:   ~w~n', [Item]),
+    format('  Источник:  ~w ~w~n', [Kind, Source]),
+    format('  Биом:      ~w~n', [Biome]),
+    format('  Измерение: ~w~n', [Dimension]),
+    writeln('  Обоснование:'),
+    (   Kind == mob
+    ->  format('    drops(~w, ~w)~n', [Source, Item]),
+        format('    spawns(~w, ~w)~n', [Source, Biome])
+    ;   format('    contains(~w, ~w)~n', [Source, Item]),
+        format('    generates(~w, ~w)~n', [Source, Biome])
+    ),
+    format('    locates(~w, ~w)~n~n', [Biome, Dimension]).
+
 show_results(Item, Dimension, Method, []) :- !,
+    nl,
+    writeln('Результат: совпадений нет'),
     writeln('В базе знаний нет источников с выбранными условиями.'),
     recommend(Item, any, any, Alternatives),
-    (Alternatives == [] ->
-        writeln('Предмет известен, но БЗ не описывает место его получения или рецепт крафта.') ;
-        format('Можно изменить ограничения (~w, ~w). Альтернативы из БЗ:~n', [Dimension, Method]),
-        maplist(show_result(Item), Alternatives)),
+    (   Alternatives == []
+    ->  writeln('Предмет известен, но БЗ не описывает место его получения или рецепт крафта.')
+    ;   format('Можно изменить ограничения (~w, ~w).~n', [Dimension, Method]),
+        writeln('Альтернативы из БЗ (не соответствуют исходным условиям):'),
+        nl,
+        maplist(show_result(Item), Alternatives)
+    ),
     writeln('Отсутствие факта не означает невозможность получения предмета в игре.').
-show_results(Item, _, _, Results) :- maplist(show_result(Item), Results).
+show_results(Item, _, _, Results) :-
+    length(Results, Count),
+    format('~nРекомендации — найдено источников: ~d~n~n', [Count]),
+    maplist(show_result(Item), Results).
 
+% Обработка одной строки: разбор → уточнение → запрос → вывод.
 request(Line) :-
-    (parse_request(Line, Item, D0, M0) ->
-        (complete(dimension, D0, D), complete(method, M0, M) ->
-            format('Запрос: recommend(~q, ~q, ~q, Results).~n', [Item, D, M]),
-            recommend(Item, D, M, Results), show_results(Item, D, M, Results) ; true) ;
-        writeln('Ошибка: проверьте формат, ключи и значения. Пример: item=шерсть;dimension=overworld;method=any')).
+    (   parse_request(Line, Item, D0, M0)
+    ->  (   complete(dimension, D0, D),
+            complete(method, M0, M)
+        ->  format('~nЗапрос: recommend(~q, ~q, ~q, Results).~n', [Item, D, M]),
+            recommend(Item, D, M, Results),
+            show_results(Item, D, M, Results)
+        ;   true
+        )
+    ;   nl,
+        writeln('Ошибка: проверьте формат, ключи и значения.'),
+        writeln('Пример: item=шерсть;dimension=overworld;method=any')
+    ).
+
 main :-
-    writeln('Minecraft DSS. Введите item=<предмет>;dimension=<измерение>;method=<способ>.'),
-    writeln('Можно указать только item: система задаст два вопроса. Для выхода: exit.'),
+    nl,
+    writeln('Minecraft DSS — поиск источников ресурсов'),
+    nl,
+    writeln('Формат: item=<предмет>;dimension=<измерение>;method=<способ>'),
+    writeln('Можно указать только item: система задаст два вопроса.'),
+    writeln('Пример: item=шерсть'),
+    writeln('Для выхода: exit'),
     loop.
+
 loop :-
-    read_line_to_string(user_input, Line),
-    (Line == end_of_file -> true ; Line == "exit" -> true ; request(Line), loop).
+    nl,
+    write('Введите запрос > '),
+    flush_output,
+    read_line_to_string(user_input, Raw),
+    (   Raw == end_of_file
+    ->  nl
+    ;   normalize_space(string(Line), Raw),
+        (   Line == "exit"
+        ->  writeln('Работа завершена.')
+        ;   request(Line),
+            loop
+        )
+    ).
